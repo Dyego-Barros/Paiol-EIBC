@@ -1,0 +1,719 @@
+﻿@model Paiol_EIBC.Models.Cautela
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CAUTELA PDF</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/css/jquery.dataTables.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Paiol_EIBC.styles.css" asp-append-version="true" />
+</head>
+
+<body>
+
+
+
+    <div class="container" style="border: 1px solid;">
+        <div class="row">
+            <div class="col-md-12" style="align-items:center; text-align:center; justify-items:center;">
+                <h3>BATALHÃO DE COMBATE AÉREO</h3>
+                <h4>CONTROLE DE SAIDA DE MATERIAL(PAIOL-EIBC)</h4>
+                <h4>CAUTELA</h4>
+            </div>
+
+            <form asp-action="Edit" method="post" asp-controller="Cautela">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <table class="table">
+
+                    <tbody>
+                        <tr>
+                            <div class="form-group">
+                            <td>
+                                <label class="form-label">OM:</label>
+                                <input asp-for="OM" class="form-control" />
+                            </td>
+                            <td>
+                                <label class="form-label">SEÇÂO:</label>
+                                <input asp-for="secao" class="form-control" />
+
+                            </td>
+        </div>
+        </tr>
+        <tr>
+            <div class="form-group">
+            <td>
+                <label class="form-label">MISSÂO:</label>
+                <input asp-for="missao" class="form-control" />
+            </td>
+            <td>
+                <label class="form-label">CONTATO:</label>
+                <input asp-for="contato" class="form-control" />
+
+            </td>
+    </div>
+    </tr>
+    </tbody>
+    </table>
+
+                @*     <div class="row" style="margin-bottom: 4px;">
+    <div class="col-md-6">
+
+    <div class="form-group">
+    <label class="form-label">OM:</label>
+    <input asp-for="OM" class="form-control" />
+    <span asp-validation-for="OM" class="text-danger"></span>
+    </div>
+    </div>
+    <div class="col-md-6">
+
+    <div class="form-group">
+    <label class="form-label">SEÇÂO:</label>
+    <input asp-for="secao" class="form-control" />
+    <span asp-validation-for="secao" class="text-danger"></span>
+    </div>
+
+    </div>
+    </div>*@
+                @* <div class="row" style="margin-bottom: 4px;">
+    <div class="col-md-6">
+    <div class="form-group">
+    <label class="form-label">MISSÂO:</label>
+    <input asp-for="missao" class="form-control" />
+    <span asp-validation-for="missao" class="text-danger"></span>
+    </div>
+
+    </div>
+    <div class="col-md-6">
+
+    <div class="form-group">
+    <label class="form-label">CONTATO:</label>
+    <input asp-for="contato" class="form-control" />
+    <span asp-validation-for="contato" class="text-danger"></span>
+    </div>
+    </div>
+    </div>*@
+
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ITEM</th>
+                <th>MATERIAL</th>
+                <th>QUANTIDADE</th>
+
+                <th>ITEM</th>
+                <th>MATERIAL</th>
+                <th>QUANTIDADE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <div class="form-group">
+                <td>ITEM-01</td>
+                <td>
+                    <input class="form-control" asp-for="item01" name="item01" />
+                </td>
+                <td> <input asp-for="qtd01" class="form-control" /></td>
+                </div>
+                <div class="form-group">
+                <td>ITEM-18</td>
+                <td>
+
+                    <input asp-for="item18" class="form-control" />
+
+
+                </td>
+                <td><input asp-for="qtd18" class="form-control" /></td>
+
+
+
+                </div>
+            </tr>
+
+
+            <tr>
+                <div class="form-group">
+                <td>ITEM-02</td>
+                <td>
+
+                    <input class="form-control" asp-for="item02" class="form-control" />
+
+
+                </td>
+                <td>  <input asp-for="qtd02" class="form-control" /></span></td>
+                </div>
+
+                <div class="form-group">
+
+                <td>ITEM-19</td>
+                <td>
+
+                    <input asp-for="item19" class="form-control" />
+
+
+                </td>
+                <td><input asp-for="qtd19" class="form-control" /></td>
+
+
+
+                </div>
+            </tr>
+
+            <tr>
+                <div class="form-group">
+                <td>ITEM-03</td>
+                <td>
+                    <input asp-for="item03" class="form-control" />
+
+                </td>
+                <td> <input asp-for="qtd03" class="form-control" /></td>
+
+                <td>ITEM-20</td>
+                <td>
+
+                    <input asp-for="item20" class="form-control" />
+
+
+                </td>
+
+                <td> <input asp-for="qtd20" class="form-control" /></td>
+
+
+
+
+                </div>
+            </tr>
+
+
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-04</td>
+                <td>
+
+                    <input asp-for="item04" class="form-control" />
+
+                </td>
+                <td> <input asp-for="qtd04" class="form-control" /> </td>
+
+                <td>ITEM-21</td>
+                <td>
+
+                    <input asp-for="item21" class="form-control" />
+
+
+
+                </td>
+                <td><input asp-for="qtd21" class="form-control" /></td>
+
+
+
+
+                </div>
+            </tr>
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-05</td>
+                <td>
+
+                    <input asp-for="item05" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd05" class="form-control" /></td>
+
+                <td>ITEM-22</td>
+                <td>
+
+                    <input asp-for="item22" class="form-control" />
+
+
+                </td>
+                <td>  <input asp-for="qtd22" class="form-control" /></td>
+
+
+
+
+
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                <td>ITEM-06</td>
+                <td>
+
+                    <input asp-for="item06" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd06" class="form-control" /></td>
+
+                <td>ITEM-23</td>
+                <td>
+
+                    <input asp-for="item23" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd23" class="form-control" /></td>
+
+
+                </div>
+            </tr>
+
+
+            <tr>
+                <div class="form-group">
+                <td>ITEM-07</td>
+                <td>
+
+                    <input asp-for="item07" class="form-control" />
+
+
+                </td>
+                <td><input asp-for="qtd07" class="form-control" /></td>
+
+                <td>ITEM-24</td>
+                <td>
+                    <input class="form-control" asp-for="item24" />
+                </td>
+                <td>  <input asp-for="qtd24" class="form-control" /></td>
+
+
+                </div>
+            </tr>
+
+
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-08</td>
+                <td>
+
+                    <input asp-for="item08" class="form-control" />
+
+
+                </td>
+                <td>  <input asp-for="qtd08" class="form-control" /></td>
+                <td>ITEM-25</td>
+                <td>
+
+                    <input asp-for="item25" class="form-control" />
+
+
+
+                </td>
+                <td>
+                    <input asp-for="qtd25" class="form-control" />
+                </td>
+
+
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                <td>ITEM-09</td>
+                <td>
+
+                    <input asp-for="item09" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd09" class="form-control" /></td>
+
+                <td>ITEM-26</td>
+                <td>
+                    <input asp-for="item26" class="form-control" />
+
+                </td>
+                <td>  <input asp-for="qtd26" class="form-control" /></td>
+
+                </div>
+            </tr>
+
+
+            <tr>
+
+                <div class="form-group">
+                <td>item-10</td>
+                <td>
+
+                    <input asp-for="item10" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd10" class="form-control" /></td>
+
+                <td>ITEM-27</td>
+                <td>
+
+                    <input asp-for="item27" class="form-control" />
+
+
+                </td>
+                <td>  <input asp-for="qtd27" class="form-control" /></td>
+
+                </div>
+            </tr>
+
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-11</td>
+                <td>
+                    <input asp-for="item11" class="form-control" />
+
+                </td>
+                <td><input asp-for="qtd11" class="form-control" /></td>
+
+                <td>ITEM-28</td>
+                <td>
+
+
+                    <input asp-for="item28" class="form-control" />
+
+
+                </td>
+
+                <td> <input asp-for="qtd28" class="form-control" /></td>
+
+
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                <td>ITEM-12</td>
+                <td>
+
+                    <input asp-for="item12" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd12" class="form-control" /></td>
+
+                <td>ITEM-29</td>
+                <td>
+
+                    <input asp-for="item29" class="form-control" />
+
+
+                </td>
+                <td>     <input asp-for="qtd29" class="form-control" /> </td>
+
+                </div>
+            </tr>
+
+            <tr>
+                <div class="form-group">
+                <td>ITEM-13</td>
+                <td>
+
+                    <input asp-for="item13" class="form-control" />
+
+
+                </td>
+                <td><input asp-for="qtd13" class="form-control" /></td>
+
+                <td>ITEM-30</td>
+                <td>
+
+                    <input asp-for="item30" class="form-control" />
+
+
+                </td>
+                <td>  <input asp-for="qtd30" class="form-control" /></td>
+
+                </div>
+            </tr>
+
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-14</td>
+                <td>
+
+                    <input asp-for="item14" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd14" class="form-control" /></td>
+
+                <td>ITEM-31</td>
+                <td>
+
+                    <input asp-for="item31" class="form-control" />
+
+                </td>
+                <td> <input asp-for="qtd31" class="form-control" /></td>
+
+                </div>
+            </tr>
+            <tr>
+                <div class="form-group">
+                <td>ITEM-15</td>
+                <td>
+
+                    <input asp-for="item15" class="form-control" />
+
+                </td>
+                <td>
+                    <input asp-for="qtd15" class="form-control" />
+                </td>
+
+                <td>ITEM-32</td>
+                <td>
+
+                    <input asp-for="item32" class="form-control" />
+
+
+                </td>
+                <td>  <input asp-for="qtd32" class="form-control" /></td>
+
+
+                </div>
+
+
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-16</td>
+                <td>
+
+                    <input asp-for="item16" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd16" class="form-control" /></td>
+
+                <td>ITEM-33</td>
+                <td>
+
+                    <input asp-for="item33" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd33" class="form-control" /></td>
+
+
+
+                </div>
+            </tr>
+
+            <tr>
+
+                <div class="form-group">
+                <td>ITEM-17</td>
+                <td>
+
+                    <input asp-for="item17" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd17" class="form-control" /></td>
+
+                <td>ITEM-34</td>
+                <td>
+
+                    <input asp-for="item34" class="form-control" />
+
+
+                </td>
+                <td> <input asp-for="qtd34" class="form-control" /></td>
+
+
+
+                </div>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>ITEM-35</td>
+                <td> <input asp-for="item35" class="form-control" /></td>
+                <td <input asp-for="qtd35" class="form-control" /></td>
+            </tr>
+        </tbody>
+
+    </table>
+
+    <label class="form-label">Observações:</label>
+<textarea asp-for="observacao" class="form-control">
+
+                    </textarea>
+
+
+
+    <div class="col-md-12" style="align-items:center; text-align:center; justify-items:center;">
+
+        <h4>SAÍDA DE MATERIAL</h4>
+    </div>
+    <hr />
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <div class="form-group">
+                <td><label class="form-group">MILITAR RECEBEDOR</label></td>
+                <td><input asp-for="militar_recebedor" class="form-control" /></td>
+                <td>
+                    <label class="form-label">ASSINATURA</label>
+                    ______________________________________
+                </td>
+                </div>
+            </tr>
+
+
+            <tr>
+                <div class="form-group">
+                <td><label class="form-label">PAIOLEIRO</label></td>
+                <td> <input asp-for="paioleiro" class="form-control" /></td>
+                <td>
+                    <label class="form-label">ASSINATURA</label>
+                    ______________________________________
+                </td>
+                </div>
+            </tr>
+
+            <tr>
+                <div class="form-group">
+                <td>  <input asp-for="data_saida" class="form-control" /></td>
+                <td>
+                    <input asp-for="ano" class="form-control" />
+                </td>
+                </div>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                @*
+    Este itens comentados estão de fora pois o Paiol so possui 35 itens, mas a tabela do banco de dado tem suporte ate 42
+    itens de Cautela em caso de necessidade copiar o item subsequente.
+    *@
+
+
+
+                @*
+    <div class="form-group">
+    <label asp-for="item36" class="control-label"></label>
+    <input asp-for="item36" class="form-control" />
+    <span asp-validation-for="item36" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd36" class="control-label"></label>
+    <input asp-for="qtd36" class="form-control" />
+    <span asp-validation-for="qtd36" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="item37" class="control-label"></label>
+    <input asp-for="item37" class="form-control" />
+    <span asp-validation-for="item37" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd37" class="control-label"></label>
+    <input asp-for="qtd37" class="form-control" />
+    <span asp-validation-for="qtd37" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="item38" class="control-label"></label>
+    <input asp-for="item38" class="form-control" />
+    <span asp-validation-for="item38" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd38" class="control-label"></label>
+    <input asp-for="qtd38" class="form-control" />
+    <span asp-validation-for="qtd38" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="item39" class="control-label"></label>
+    <input asp-for="item39" class="form-control" />
+    <span asp-validation-for="item39" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd39" class="control-label"></label>
+    <input asp-for="qtd39" class="form-control" />
+    <span asp-validation-for="qtd39" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="item40" class="control-label"></label>
+    <input asp-for="item40" class="form-control" />
+    <span asp-validation-for="item40" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd40" class="control-label"></label>
+    <input asp-for="qtd40" class="form-control" />
+    <span asp-validation-for="qtd40" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="item41" class="control-label"></label>
+    <input asp-for="item41" class="form-control" />
+    <span asp-validation-for="item41" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd41" class="control-label"></label>
+    <input asp-for="qtd41" class="form-control" />
+    <span asp-validation-for="qtd41" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="item42" class="control-label"></label>
+    <input asp-for="item42" class="form-control" />
+    <span asp-validation-for="item42" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+    <label asp-for="qtd42" class="control-label"></label>
+    <input asp-for="qtd42" class="form-control" />
+    <span asp-validation-for="qtd42" class="text-danger"></span>
+    </div>
+
+
+
+    *@
+
+
+
+
+
+
+    </form>
+
+
+
+    </div>
+
+
+
+
+
+
+  
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/swetalert.min.js" asp-append-version="true"></script>
+    <script src="~/js/jquery.dataTables.min.js" asp-append-version="true"></script>
+
+
+   
+</body>
+</html>
+

@@ -1,0 +1,33 @@
+@model Paiol_EIBC.Models.Material
+
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+       <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Cadastrar Material</h4>
+                </div>
+                <div class="card-body">
+                    <form class="form-control" asp-controller="Material" asp-action="Create" method="post">
+                        <label class="form-label">Material</label>
+                        @Html.EditorFor(model => model.nome_material, new{htmlAttributes = new {@class="form-control"}})
+                        <label class="form-label">Quantidade</label>
+                        @Html.EditorFor(model => model.quantidade, new{htmlAttributes = new {@class="form-control"}})
+                        <input type="submit" class="btn btn-lg btn-block  btn-success" value="Cadastrar" style="    width: 100%;
+    margin-bottom: 3px;
+    margin-top: 10px;" />
+                    </form>
+                </div>
+            </div>
+       </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>

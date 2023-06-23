@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="login">
+    
+       <div class="card-login">
+        <img src="~/img/BreveCurso.png" class="img-fluid" style="width:450px; margin-bottom:5px;" />
+           <div class="card">
+           <div class="card-header text-center">
+               EIBC
+           </div>
+           <div class="card-body">
+            <form class="form-control" asp-controller="Home" asp-action="Login" method="post">
+                <label class="form-label">
+                    NIP:
+                </label>
+                <input type="text" class="form-control" name="nip" />
+                <label class=" form-label">
+                    SENHA:
+                </label>
+                <input type="password" class="form-control" name="password" />
+
+              
+                    <input type="submit" class="btn btn-lg btn-block btn-success" value="LOGIN" style="    width: 100%;
+    margin-bottom: 3px;
+    margin-top: 10px;" />
+                
+
+
+
+            </form>
+
+           </div>
+
+        </div>
+
+    </div>
+</div>

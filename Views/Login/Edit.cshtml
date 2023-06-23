@@ -1,0 +1,45 @@
+@model Paiol_EIBC.Models.Login
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Editar Usuário";
+}
+
+@if(TempData["EditError"] != null){
+    <p class="alert-danger">Erro ao Editar Usuário</p>
+}
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h4>Editar Usuário</h4>
+            </div>
+            <div class="card-body">
+                <form class="form-control" asp-controller="Login" asp-action="Edit" method="post">
+                    <label class="label-form">Posto / Graduação <strong class="text-danger">@Html.ValidationMessageFor(model => model.posto_graduacao)</strong></label>
+                    <input type="text" class="form-control" name="posto_graduacao" id="post_graduacao" value="@Html.DisplayFor(model => model.posto_graduacao)" />
+                    <label class="label-form">Nip <strong class="text-danger">@Html.ValidationMessageFor(model => model.nip)</strong></label>
+                    <input type="text" class="form-control" name="nip" id="nip" value="@Html.DisplayFor(model => model.nip)" />
+                    <label class="label-form">Nome de Guerra <strong class="text-danger">@Html.ValidationMessageFor(model => model.nome_guerra)</strong></label>
+                    <input type="text" class="form-control" name="nome_guerra" id="nome_guerra" value="@Html.DisplayFor(model => model.nome_guerra)" />
+                    <label class="label-form">Senha <strong class="text-danger">@Html.ValidationMessageFor(model => model.password)</strong></label>
+                    <input type="password" class="form-control" name="password" id="password" value="@Html.DisplayFor(model => model.password)" />
+
+                    <input type="submit" class=" btn btn-success btn-lg btn-block" value="EDITAR" style="    width: 100%;
+    margin-bottom: 3px;
+    margin-top: 10px;" />
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+
+

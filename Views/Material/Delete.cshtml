@@ -1,0 +1,45 @@
+@model Paiol_EIBC.Models.Material
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Deletar Material";
+}
+
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+      <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="text-danger">Deseja Excluir o Material ?</h1>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Material" asp-action="Delete" class="form-control" method="post">
+                        <div class="row">
+                            <label class="form-label">Material</label>
+                            <input type="tex" disabled name="nome_material" id="nome_material" value="@Html.DisplayFor(model => model.nome_material)" />
+                        </div>
+
+                        <div class="row">
+                            <label class="form-label">Quantidade</label>
+                            <input type="tex" disabled name="nome_material" id="nome_material" value="@Html.DisplayFor(model => model.quantidade)" />
+                        </div>
+                        <div class="row">
+                            <input type="submit" class="btn btn-lg btn-block btn-danger" value="Deletar" />
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+          
+         
+      </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>

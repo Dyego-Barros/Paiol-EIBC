@@ -1,0 +1,47 @@
+@model Paiol_EIBC.Models.MaterialDanificado
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Deletar Material Danificado";
+}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+           <div class="card">
+               <div class="card-header">
+                   <h3 class="text-danger">Deseja Excluir este Material Danificado?</h3>
+               </div>
+               <div class="card-body">
+                    <form asp-controller="MaterialDanificado" asp-action="Delete" class="form-control" method="post">
+                        <div class="row">
+                            <label class="label-form">Material</label>
+                            <input type="tex" disabled name="nome_material" id="nome_material" value="@Html.DisplayFor(model => model.material)" />
+                        </div>
+
+                        <div class="row">
+                            <label class="label-form">Observação</label>
+                            <input type="tex" disabled name="nome_material" id="nome_material" value="@Html.DisplayFor(model => model.observacao)" />
+                        </div>
+                        <div class="row">
+                            <label class="label-form">Quantidade</label>
+                            <input type="number" disabled name="nome_material" id="nome_material" value="@Html.DisplayFor(model => model.qtd)" />
+                        </div>
+                        <div class="row">
+                            <input type="submit" class="btn btn-lg btn-block btn-danger" value="Deletar" />
+                        </div>
+
+                    </form>
+               </div>
+           </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+       
+    </div>
+</div>

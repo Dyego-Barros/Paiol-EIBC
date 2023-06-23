@@ -1,0 +1,32 @@
+@model Paiol_EIBC.Models.Material
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Detalhes Material";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+       <div class="col-md-7">
+            <fieldset>
+                <div class="card">
+                    <div class="card-header">
+                       Detalhes Material
+                    </div>
+                    <div class="card-body">
+                        <form class="form-control">
+                            <input class="form-control" value="@Html.DisplayFor(model => model.nome_material)" disabled />
+                            <input class="form-control" value="@Html.DisplayFor(model => model.quantidade)" disabled  />
+                        </form>
+                    </div>
+                </div>
+               
+            </fieldset>
+       </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>

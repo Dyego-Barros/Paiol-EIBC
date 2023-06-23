@@ -1,0 +1,34 @@
+@model Paiol_EIBC.Models.Login;
+
+@{
+
+    ViewData["Title"] = "Excluir Usuário";
+    
+}
+
+<div class="container">
+   
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="text-danger">Deseja Excluir @Html.DisplayFor(model => model.posto_graduacao) @Html.DisplayFor(model => model.nome_guerra) ?</h4>
+            </div>
+            <div class="card-body">
+                <form class="form-control" asp-controller="Login" asp-action="Delete" method="post">
+                    <label>Posto / Graduação</label>
+                    <input type="text" class="form-control" value="@Html.DisplayFor(model => model.posto_graduacao)" />
+                    <label>Nip</label>
+                    <input type="text" class="form-control" value="@Html.DisplayFor(model => model.nip)" />
+                    <label>Nome de Guerra</label>
+                    <input type="text" class="form-control" value="@Html.DisplayFor(model => model.nome_guerra)" />
+                    <label>Senha</label>
+                    <input type="password" class="form-control" value="@Html.DisplayFor(model => model.posto_graduacao)" />
+                    <input type="submit" class="btn btn-danger btn-lg" value="Excluir" />
+                </form>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+

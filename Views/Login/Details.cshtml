@@ -1,0 +1,30 @@
+
+@model Paiol_EIBC.Models.Login;
+
+
+
+<h1>Detalhes</h1>
+
+<div class="container-fluid">
+    <div class="row">
+       
+         <fieldset>
+             <div class="card">
+                 <div class="card-header">
+                    Detalhes de Usuário
+                 </div>
+                 <div class="card-body">
+                     <form class="form-control">
+                        <input class="form-control" value="@Html.DisplayFor(model => model.posto_graduacao)" disabled />
+                        <input class="form-control" value="@Html.DisplayFor(model => model.nip)" disabled />
+                        <input class="form-control" value="@Html.DisplayFor(model => model.nome_guerra)" disabled />
+                        <input class="form-control" type="password" value="@Html.DisplayFor(model => model.password)" disabled />
+                     </form>
+                 </div>
+             </div>
+           
+        </fieldset>
+        
+      
+    </div>
+</div>

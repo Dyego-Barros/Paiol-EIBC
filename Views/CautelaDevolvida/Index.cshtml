@@ -1,0 +1,179 @@
+﻿@model IEnumerable<Paiol_EIBC.Models.CautelaDevolvida>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<table class="table table-bordered table-striped" id="myTable">
+    <thead class="header-table">
+        <tr>
+            
+            <th>
+               OM
+            </th>
+            <th>
+                MISSÂO
+            </th>
+            <th>
+                SETOR
+            </th>
+            <th>
+              CONTATO
+            </th>
+          <th>
+
+              OPÇÕES
+          </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.militar_devolvedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.paioleiro_recebedor)
+            </th>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.ano)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status_devolucao)
+            </th>*@
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OM)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.missao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.secao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.contato)
+                </td>
+
+@*
+                <td>
+                    @Html.DisplayFor(modelItem => item.militar_devolvedor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.paioleiro_recebedor)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.status_devolucao)
+                </td>*@
+                <td>
+                    <a class="btn btn-primary " asp-action="Edit" asp-route-id="@item.id"><i class="fa-solid fa-file-pen"></i></a>|
+                    <a class="btn btn-warning " asp-action="Details" asp-route-id="@item.id"><i class="fa-solid fa-square-info"></i></a>|
+                    <a class="btn btn-danger " asp-action="Delete" asp-route-id="@item.id"><i class="fa-solid fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        let table = new DataTable('#myTable');
+    </script>
+
+    @if (TempData["CreateCautela"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                toast: true,
+                title: 'Cautela Criada com Sucesso!'
+                            grow: 'row',
+                timer: 2000,
+
+            })
+        </script>
+    }
+
+    @if (TempData["ErrorCreateCautela"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'error',
+                grow: 'row',
+                timer: 2000,
+                title: 'Error ao Cadastrar Cautela!'
+            })
+        </script>
+    }
+
+    @if (TempData["EditCautela"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'success',
+                grow: 'row',
+                timer: 2000,
+                title: 'Cautela Editada com Sucesso!'
+            })
+        </script>
+    }
+
+    @if (TempData["ErrorEditCautela"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'error',
+                grow: 'row',
+                timer: 2000,
+                title: 'Error ao Editar Cautela!'
+            })
+        </script>
+    }
+
+
+    @if (TempData["DeleteCautela"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                toast: true,
+                icon: 'sucess',
+                grow: 'row',
+                timer: 2000,
+                title: 'Cautela Excluida com Sucesso!'
+            })
+        </script>
+    }
+
+    @if (TempData["ErrorDeleteCautela"] != null)
+    {
+        <script type="text/javascript">
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                toast: true,
+                grow: 'row',
+                timer: 2000,
+                title: 'Error ao Deletar Cautela!'
+            })
+        </script>
+    }
+}

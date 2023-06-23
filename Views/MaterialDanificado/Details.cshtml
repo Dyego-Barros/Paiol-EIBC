@@ -1,0 +1,39 @@
+@model Paiol_EIBC.Models.MaterialDanificado;
+
+@{
+    Layout = "_Layout";
+   
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Detalhes Material
+        </div>
+        <div class="card-body">
+            <fieldset>
+                <form class="form-control">
+                    <div class="row " style="margin-top: 5px;">
+                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.material)" disabled />
+                    </div>
+
+                    <div class="row" style="margin-top: 5px;">
+                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.qtd)" disabled />
+                    </div>
+
+
+                    <div class="row" style="margin-top: 5px;">
+                        <input type="text" class="form-control" value="@Html.DisplayFor(model => model.observacao)" disabled />
+                    </div>
+
+
+
+                </form>
+
+            </fieldset>
+
+        </div>
+    </div>
+   
+</div>
+

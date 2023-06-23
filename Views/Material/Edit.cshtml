@@ -1,0 +1,41 @@
+@model Paiol_EIBC.Models.Material
+
+@{
+    Layout = "_Layout";
+   
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+
+        </div>
+       <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    @{
+                        ViewData["Title"] = "Editar Material";
+                    }
+                </div>
+                <div class="card-body">
+                    <form class="form-control" asp-controller="Material" asp-action="Edit" method="post">
+                        <label class="form-label">Material</label>
+                        <input type="tex" class="form-control" name="nome_material" id="nome_material" value="@Html.DisplayFor(model => model.nome_material)" />
+                        <label class="form-label">Quantidade</label>
+                        <input type="number" class="form-control" name="quantidade" id="quantidade" value="@Html.DisplayFor(model => model.quantidade)" />
+
+                        <input type="submit" class="btn btn-lg btn-block btn-success" value="EDITAR" style="    width: 100%;
+    margin-bottom: 3px;
+    margin-top: 10px;" />
+
+                    </form>
+                </div>
+            </div>
+
+         
+       </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>

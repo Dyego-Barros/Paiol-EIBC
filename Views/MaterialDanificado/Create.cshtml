@@ -1,0 +1,50 @@
+@model Paiol_EIBC.Models.MaterialDanificado
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Cadastrar Material Danificado</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="MaterialDanificado" asp-action="Create" method="post">
+                        <div class="row">
+                            <label class="label-form">Material</label>
+                            <input type="text" name="material" id="material_danificado" class="form-control" />
+                        </div>
+
+                        <div class="row">
+                            <label class="label-form">Quantidade</label>
+                            @Html.EditorFor(model => model.qtd, new{htmlAttributes = new{@class="form-control"}})
+                        </div>
+
+                        <div class="row">
+                            <label class="form-label">Observação</label>
+                            <input type="text" , name="observacao" id="observacao" class="form-control" />
+                        </div>
+                        <div class="row" style="margin-top:5px;">
+                            <input type="submit" class="btn btn-lg btn-block btn-success" value="Cadastrar" style="    width: 100%;
+    margin-bottom: 3px;
+    margin-top: 10px;" />
+                        </div>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+        </div>
+       
+    </div>
+</div>
