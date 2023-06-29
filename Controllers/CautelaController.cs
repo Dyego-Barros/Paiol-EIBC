@@ -6,6 +6,7 @@ using Rotativa;
 using Rotativa.AspNetCore;
 using ViewAsPdf = Rotativa.AspNetCore.ViewAsPdf;
 using Microsoft.AspNetCore.Authorization;
+using System.Net;
 
 namespace Paiol_EIBC.Controllers;
 
@@ -42,7 +43,15 @@ public CautelaController(CautelaService service)
         {
             _service.Create(cautela);
             TempData["CreateCautela"] = "Cautela Criada Com Sucesso!";
-            return Redirect("/Cautela");
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Cadastrou uma Nova Cautela para {cautela.militar_recebedor} para a missão {cautela.missao} em {cautela.data_saida}");
+                writer.WriteLine(" "+ "IP utilizado para cadastrar a cautela"+" " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de cadastro"+ " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
+                return Redirect("/Cautela");
 
         }
         else
@@ -70,6 +79,15 @@ public CautelaController(CautelaService service)
 
             _service.Update(cautela);
             TempData["EditCautela"] = "Cautela Editada com Sucesso!";
+
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Editou a  Cautela de {cautela.militar_recebedor} para a missão {cautela.missao} em {cautela.data_saida}");
+                writer.WriteLine(" " + "IP utilizado para editar a cautela" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de edição" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
             return Redirect("/Cautela");
 
         }
@@ -102,6 +120,14 @@ public CautelaController(CautelaService service)
         {
             _service.Delete(cautela);
             TempData["DeleteCautela"] = "Cautela Deletada com Sucesso!";
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Deletou a Cautela de {cautela.militar_recebedor} para a missão {cautela.missao} em {cautela.data_saida}");
+                writer.WriteLine(" " + "IP utilizado para deletar a cautela" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de exclusão" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
             return Redirect("/Cautela");
         }
         else

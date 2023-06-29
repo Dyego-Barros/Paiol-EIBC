@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+﻿using System.Net;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Paiol_EIBC.Models;
+
 
 namespace Paiol_EIBC.Controllers;
 
@@ -52,7 +53,15 @@ public class HomeController : Controller
                     var ClaimPrincipal = new ClaimsPrincipal(new ClaimsIdentity(claim, CookieAuthenticationDefaults.AuthenticationScheme));
 
                     HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, ClaimPrincipal, authproperties);
-                    return Redirect("/Cautela");
+                   
+                    using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+                    {
+                        writer.Write(User.Identity.Name +" "+ "Login dia");
+                        writer.WriteLine(" "+ DateTime.Today.ToShortDateString()+ " " + " IP utilizado para login"+" " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString());
+                        writer.Close();
+
+                    }
+                        return Redirect("/Cautela");
                 }
                
             }

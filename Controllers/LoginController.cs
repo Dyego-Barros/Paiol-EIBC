@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Paiol_EIBC.Models;
+using System.Net;
 
 namespace Paiol_EIBC.Controllers;
 public class  LoginController : Controller
@@ -36,7 +37,15 @@ public class  LoginController : Controller
      {
            _service.Create(login);
            TempData["CreateUser"] = "Usuário Criado com Sucesso";
-           return Redirect("/Login");
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Cadastrou o usuário {login.posto_graduacao}  {login.nome_guerra} ");
+                writer.WriteLine(" " + "IP utilizado para cadastrar o usuário" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de cadastro" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
+            return Redirect("/Login");
      }
      else{
         return View("Create");
@@ -66,6 +75,14 @@ public class  LoginController : Controller
           _service.Delete(id,login);
 
             TempData["DeleteUser"] = "Usuário Deletado com Sucesso!";
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Excluiu o usuário {login.posto_graduacao}  {login.nome_guerra} ");
+                writer.WriteLine(" " + "IP utilizado para excluir o usuário" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de exclusão" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
             return Redirect("/Login");
         }
         else{
@@ -90,6 +107,14 @@ public class  LoginController : Controller
         {
             _service.Update(id, login);
             TempData["EditSuccess"]= "Usuário Editado com sucesso!";
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $"Editou o usuário {login.posto_graduacao}  {login.nome_guerra} ");
+                writer.WriteLine(" " + "IP utilizado para editou o usuário" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de edição" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
             return Redirect("/Login");
         }else
         {

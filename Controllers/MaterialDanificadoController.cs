@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Paiol_EIBC.Models;
 using System;
+using System.Net;
 
 namespace Paiol_EIBC.Controllers;
 
@@ -33,6 +34,14 @@ public class MaterialDanificadoController: Controller
         {
             _service.Create(materialDanificado);
             TempData["MaterialDanificadoCreate"] = "Material Cadastrado com sucesso!";
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Cadastrou o material danificado {materialDanificado.material} quantidade do material danificado {materialDanificado.qtd} ");
+                writer.WriteLine(" " + "IP utilizado para cadastrar material danificado" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de cadastro" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
             return Redirect("/MaterialDanificado");
 
         }else
@@ -67,6 +76,14 @@ public class MaterialDanificadoController: Controller
 
             _service.Update(materialDanificado);
             TempData["MaterialDanificadoEdit"] = "Material Editado com sucesso!";
+            using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+            {
+                writer.Write(User.Identity.Name + " " + $" Editou o material danificado {materialDanificado.material} quantidade do material danificado {materialDanificado.qtd} ");
+                writer.WriteLine(" " + "IP utilizado para editar material danificado" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de edição" + " " + DateTime.Today.ToShortDateString());
+                writer.Close();
+
+
+            }
             return Redirect("/MaterialDanificado");
 
         }else
@@ -87,10 +104,20 @@ public class MaterialDanificadoController: Controller
     [HttpPost]
     public IActionResult Delete(int id, MaterialDanificado danificado)
     {
+        using (StreamWriter writer = new StreamWriter("Logs/Eibc_logs.txt", true))
+        {
+            writer.Write(User.Identity.Name + " " + $" Deletou o material danificado {danificado.material} quantidade do material danificado {danificado.qtd} ");
+            writer.WriteLine(" " + "IP utilizado para deletar material danificado" + " " + Dns.GetHostByName(Dns.GetHostName()).AddressList[3].ToString() + " " + "Data de exclusão" + " " + DateTime.Today.ToShortDateString());
+            writer.Close();
+
+
+        }
         if (id == danificado.id)
         {
+           
             _service.Delete(danificado);
             TempData["MaterialDanificadoDelete"] = "Material Danificado Excluido com Sucesso!";
+           
             return Redirect("/MaterialDanificado");
 
         }
